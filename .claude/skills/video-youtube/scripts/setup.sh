@@ -4,6 +4,15 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SHARED="$HERE/../../video-edit/scripts/setup.sh"
 
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*)
+    echo "偵測到 Windows (Git Bash)。" >&2
+    echo "安裝請改用 PowerShell 跑:" >&2
+    echo "  powershell -ExecutionPolicy Bypass -File .claude\\skills\\video-youtube\\scripts\\setup.ps1" >&2
+    echo "詳細說明看 .claude/skills/video-youtube/WINDOWS.md" >&2
+    exit 1 ;;
+esac
+
 if [ -f "$SHARED" ]; then
   exec bash "$SHARED"
 fi

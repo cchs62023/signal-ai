@@ -3,6 +3,14 @@
 set -uo pipefail
 
 OS="$(uname -s)"
+case "$OS" in
+  MINGW*|MSYS*|CYGWIN*)
+    echo "偵測到 Windows (Git Bash)。apt/brew 在這裡不能用。" >&2
+    echo "安裝請改用 PowerShell 跑:" >&2
+    echo "  powershell -ExecutionPolicy Bypass -File .claude\\skills\\video-youtube\\scripts\\setup.ps1" >&2
+    echo "詳細說明看 .claude/skills/video-youtube/WINDOWS.md" >&2
+    exit 1 ;;
+esac
 FAIL=0
 note() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 ok()   { printf '  \033[32mok\033[0m   %s\n' "$*"; }

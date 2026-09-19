@@ -29,11 +29,19 @@ OUTLINE="$(python3 -c "print(max(2, round($SIZE * 0.09)))")"
 # 挑一個真的存在的中文字型，避免豆腐字
 FONT="${5:-}"
 if [ -z "$FONT" ]; then
-  for f in "Noto Sans CJK TC" "Noto Sans TC" "PingFang TC" "Heiti TC" "Microsoft JhengHei"; do
-    if fc-list 2>/dev/null | grep -qF "$f"; then FONT="$f"; break; fi
-  done
-  [ -z "$FONT" ] && [ "$(uname -s)" = "Darwin" ] && FONT="PingFang TC"
-  FONT="${FONT:-Noto Sans CJK TC}"
+  if command -v fc-list >/dev/null 2>&1; then
+    for f in "Noto Sans CJK TC" "Noto Sans TC" "PingFang TC" "Heiti TC" "Microsoft JhengHei"; do
+      if fc-list 2>/dev/null | grep -qF "$f"; then FONT="$f"; break; fi
+    done
+  fi
+  # Windows 的 Git Bash 沒有 fontconfig，直接照系統給預設值
+  if [ -z "$FONT" ]; then
+    case "$(uname -s)" in
+      Darwin*)              FONT="PingFang TC" ;;
+      MINGW*|MSYS*|CYGWIN*) FONT="Microsoft JhengHei" ;;
+      *)                    FONT="Noto Sans CJK TC" ;;
+    esac
+  fi
 fi
 
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT

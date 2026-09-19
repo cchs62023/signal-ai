@@ -31,8 +31,20 @@ FPS="$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate \
 FPS="${FPS:-30}"
 
 # 餵字型「檔案路徑」給 ImageMagick，比用字型名稱可靠（名稱常常對不上）
-FONT_FILE="$(fc-match -f "%{file}" "Noto Sans CJK TC:style=Bold" 2>/dev/null || true)"
-[ -f "${FONT_FILE:-}" ] || FONT_FILE="$(fc-match -f "%{file}" "sans-serif:lang=zh-tw:style=Bold" 2>/dev/null || true)"
+FONT_FILE=""
+if command -v fc-match >/dev/null 2>&1; then
+  FONT_FILE="$(fc-match -f "%{file}" "Noto Sans CJK TC:style=Bold" 2>/dev/null || true)"
+  [ -f "${FONT_FILE:-}" ] || FONT_FILE="$(fc-match -f "%{file}" "sans-serif:lang=zh-tw:style=Bold" 2>/dev/null || true)"
+fi
+# Windows / macOS 沒有 fontconfig 時直接找系統字型資料夾
+if [ ! -f "${FONT_FILE:-}" ]; then
+  _w="${SYSTEMROOT:-${WINDIR:-C:/Windows}}"; _w="${_w//\\//}"
+  for _c in "$_w/Fonts/msjhbd.ttc" "$_w/Fonts/msjh.ttc" "$_w/Fonts/arialbd.ttf" \
+            "/System/Library/Fonts/PingFang.ttc" \
+            "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"; do
+    [ -f "$_c" ] && { FONT_FILE="$_c"; break; }
+  done
+fi
 FONT_ARG=(); [ -f "${FONT_FILE:-}" ] && FONT_ARG=(-font "$FONT_FILE")
 
 MAIN_PT="$(python3 -c "print(round($VW * 0.085))")"

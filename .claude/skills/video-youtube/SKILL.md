@@ -18,6 +18,9 @@ bash .claude/skills/video-youtube/scripts/setup.sh
 工具鏈和 `video-edit` 共用同一份（ffmpeg、ImageMagick、auto-editor、faster-whisper、中文字型），
 所以兩個 skill 要放在一起。快剪和語音轉文字是直接呼叫 `video-edit` 的腳本，不重複維護。
 
+**Windows 使用者**：PowerShell 不能執行這些腳本，請看 [`WINDOWS.md`](WINDOWS.md)。
+簡單說是先用 `scripts/setup.ps1` 裝工具，然後改用 Git Bash 或 WSL 跑剪輯指令。
+
 ## 多段素材（最常見的 demo 情境）
 
 一支影片分成好幾個功能段落時，寫一個章節設定檔就好：
