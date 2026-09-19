@@ -1,18 +1,25 @@
 # Signal AI — section plan for the 3-minute YouTube demo
 #
 # Format: clip | chapter title | start sec | end sec | subtitle
-# Leave start/end empty to use the whole clip. When it's right, run:
-#   bash ../.claude/skills/video-youtube/scripts/make-youtube.sh --sections sections.txt \
-#     -o signal_demo_youtube.mp4 --title "Signal AI" --sub "The assistant that learns how you learn"
+# Leave start/end empty to use the whole clip.
 #
-# The seconds below are a budget for fitting 3 minutes — they are NOT measured
-# from your footage. Measure first, then correct them:
-#   for f in *.mp4; do printf "%-22s %ss\n" "$f" "$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" | cut -d. -f1)"; done
+# !! 檔名是假的 !! 下面五個 .mp4 是照講稿的五段命名的佔位名稱。
+# 把它們改成你實際的檔名，或把你的檔案改成這些名字。
+# 如果你的素材是「一整支連續錄影」而不是五個檔，改成這樣就好
+# （同一個檔，用 start/end 切開）:
+#   demo.mp4 | Signal in the background | 0   | 35  |
+#   demo.mp4 | One decision             | 35  | 48  |
+#   demo.mp4 | Where the info came from | 48  | 69  |
+#   demo.mp4 | Who decides what         | 69  | 85  |
+#   demo.mp4 | Ask and decide           | 85  | 113 |
 #
-# Budget: 5 title cards x 2.5s = 12.5s, plus ~165s of footage = about 2:58.
+# 先量長度再調秒數:
+#   for f in *.mp4; do printf "%-26s %ss\n" "$f" "$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" | cut -d. -f1)"; done
+#
+# 秒數是照講稿算的（130 字/分 + 每個畫面動作 0.8 秒），不是從素材量的。
 
-onboarding.mp4 | Learns how you learn        | 0 | 30 | Learning Profile Onboarding
-sequencing.mp4 | Follows your train of thought | 0 | 45 | Sequential Question Handling
-format.mp4     | Your format, your call      | 0 | 28 | Format Customization
-trust.mp4      | Every claim, checkable      | 0 | 32 | Trust Indicators & Verification
-reflection.mp4 | It asks you back            | 0 | 30 | Critical Thinking & Reflection
+background.mp4  | Signal in the background | 0 | 35 | Connect your tools, then forget it's there
+decision.mp4    | One decision             | 0 | 13 | One thing actually needs you
+evidence.mp4    | Where the info came from | 0 | 21 | Follow the claim back to its source
+stakeholders.mp4| Who decides what         | 0 | 16 | Authority, not just opinion
+ask.mp4         | Ask and decide           | 0 | 28 | It drafts, you approve, you decide

@@ -1,118 +1,99 @@
-# Signal AI — 3-Minute Demo Script (draft)
+# Signal AI — 3-Minute Demo Script
 
-Target runtime **2:58**. Each section opens with a 2.5s title card; narration starts
-once the card clears.
+Actual narration, as provided. `[brackets]` are on-screen actions, not spoken.
 
-> Written from the five clips' feature names — **not yet checked against what actually
-> happens on screen**. Section 5 already has the script I drafted for you earlier;
-> swap that in and I'll match the other four to its tone.
->
-> Each section is sized to be read in its allotted time at a natural pace
-> (~150 words/min). Word counts are noted per section.
+Spoken total ≈ 1:51. With 5 title cards (2.5s each) the finished video lands
+around **2:03** — comfortably inside 3 minutes.
 
 ---
 
-## Cold open (before the first title card, ~8s, 20 words)
+## 1. Signal in the background — 35s
 
-> Most AI assistants wait for you to ask.
-> Signal starts somewhere else — by working out how you actually learn.
+> Let me start by connecting my work tools. `[Connect Zoom]`
+> I'll add Zoom, `[Connect Gmail]` and Gmail.
+> Signal only sees what I already have access to. `[Continue]`
+> Now it moves to the corner and stays out of the way. `[Click Zoom in the dock]`
+> When I'm in a meeting, it listens. `[Click Gmail, Jira, Slack]`
+> As I go through email, Jira and Slack, it picks up anything related to my projects.
+> See the number going up? That's Signal collecting updates.
 
----
-
-## 1. Learns how you learn (0:00–0:32 | ~30s, 75 words)
-
-> The first time you open Signal, there's no blank prompt box.
->
-> It asks you a few things first. Do you want the conclusion up front, or the
-> reasoning that gets you there? How much detail is useful before it becomes noise?
-> How much of this subject do you already know?
->
-> Those answers become your learning profile. Every response after that is shaped
-> by it — not one explanation handed to everyone.
-
-**On screen**: onboarding questions → generated profile card
+66 words, 5 on-screen actions.
 
 ---
 
-## 2. Follows your train of thought (0:32–1:20 | ~45s, 112 words)
+## 2. One decision — 13s
 
-> When you're actually learning something, you rarely get it in one question.
->
-> You ask. It answers. You push on a detail — and it remembers what it just told you,
-> instead of starting over like you walked in cold.
->
-> Here's the part that matters. It works out *why* you're asking again.
-> Did the explanation miss, and you need it framed differently?
-> Or did it land, and you're ready to go a level deeper?
->
-> Those two need completely different answers, and Signal tells them apart.
->
-> This is the core of the product: a conversation with a direction, not a
-> sequence of unrelated replies.
+> Let's see what it found. `[Click the orb]`
+> It's flagging one decision, whether to approve this storage project. `[Open project]`
+> It's on hold because security hasn't signed off yet.
 
-**On screen**: three follow-ups in a row → highlight where it references earlier turns
+24 words, 2 actions.
 
 ---
 
-## 3. Your format, your call (1:20–1:50 | ~28s, 70 words)
+## 3. Where the info came from — 21s
 
-> The same answer doesn't work in the same shape for everyone.
->
-> Ask for it as a table. As bullets. Cut down to three sentences.
-> Or the other way — opened up into step by step.
->
-> You don't re-ask the question to change the format. It's the same answer,
-> handed to you differently.
->
-> Which sounds small, until you're trying to revise from something you read last week,
-> and the wall of prose you needed back then is now the thing standing in your way.
+> Here's the part I care about most. `[Click Evidence]`
+> Jira says security is fine. `[Open 'Security should be okay']`
+> But let's check where that came from.
+> The security lead said something in a meeting, someone repeated it,
+> and then someone else wrote it down.
+> She never actually approved it.
 
-**On screen**: one answer switching between table / bullets / summary
+42 words, 2 actions. The strongest moment in the demo — let the last line land
+before cutting.
 
 ---
 
-## 4. Every claim, checkable (1:50–2:25 | ~32s, 80 words)
+## 4. Who decides what — 16s
 
-> An AI sounding confident tells you nothing about whether it's right.
-> We'd rather not paper over that.
->
-> Every response in Signal carries its basis: where it came from, how solid it is,
-> and which parts it isn't sure about.
->
-> Open any source and read it yourself. Where confidence is low, it says so —
-> instead of smoothing over the gap with a well-formed sentence.
->
-> A tool you can learn from is a tool you can check.
+> So who actually decides? `[Click Stakeholders]`
+> The CEO has the final say on priorities, but not on security.
+> Only the security lead can approve that.
+> Down here, Signal shows who hasn't weighed in yet.
 
-**On screen**: trust indicators → expand a source → low-confidence flag
+32 words, 1 action.
 
 ---
 
-## 5. It asks you back (2:25–2:58 | ~30s, 75 words)
+## 5. Ask and decide — 28s
 
-> *(Use the script you already have for this section — I'll match the rest to it.)*
->
-> Placeholder direction: taking an answer isn't the same as learning it.
-> You've learned it when you can put it back in your own words.
->
-> So Signal turns the question around. Why do you think it works this way?
-> Where would this stop being true?
->
-> Answer those, and it stuck.
+> Let's fix that. `[Click Ask Security]`
+> Signal writes the message for me, but it can't send it on its own. `[Approve & Send]`
+> I approve it, and it goes out.
+> While we wait, I can keep working. And here's her reply. `[Apply to project]`
+> The project updates everywhere at once. `[Click Decision]`
+> Signal suggests keeping it on hold, but the final call is mine.
 
-**On screen**: reflection prompt → user responds → system feedback
+53 words, 4 actions.
 
 ---
 
-## Close (final ~5s, 12 words)
+## Timing note
 
-> Signal AI. Not just answering you — getting you to actually learn it.
+The durations above are **revised up from the ones you gave**. Measured at a
+natural 130 words/min plus ~0.8s per on-screen action for the click to land:
 
----
+| Section | You said | Realistic | Why |
+|---|---|---|---|
+| 1. Signal in the background | 20s | **35s** | 66 words + 5 clicks — 20s needs ~200 wpm, too fast to follow |
+| 2. One decision | 15s | 13s | fits, slightly short |
+| 3. Where the info came from | 30s | 21s | fits with room to pause |
+| 4. Who decides what | 20s | 16s | fits |
+| 5. Ask and decide | 30s | 28s | fits |
+| **Total** | 115s | **113s** | same overall, redistributed |
+
+Section 1 is the only real problem: it's a third of the words and a third of the
+clicks, squeezed into the shortest slot. The total stays the same because
+sections 3 and 4 had more room than they needed.
+
+If you want section 1 tighter, the cuttable line is
+"Signal only sees what I already have access to" — it's a trust point, but it
+repeats later in section 5 when Signal can't send without approval.
 
 ## Recording notes
 
-- Phone earbuds are fine. What matters is **15cm from your mouth in a room without echo**
-- Record each section as its own file — reshoot one section, not the whole thing
-- Leave 2 seconds of silence between sections; it makes lining things up much easier
-- Run the recording through `transcribe.py` and you get the subtitles for free
+- Record each section as its own file, so a fluffed line means one reshoot
+- Leave 2 seconds of silence between sections — makes lining up trivial
+- Perform the click, *then* speak; narrating over a UI transition reads as rushed
+- Run the recording through `transcribe.py` and the subtitles come for free
