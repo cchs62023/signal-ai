@@ -31,7 +31,7 @@ pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1" \
 if [ -n "$TITLE" ]; then
   FONT_FILE="$(cjk_font_file || true)"
   FONT_ARG=(); [ -n "${FONT_FILE:-}" ] && FONT_ARG=(-font "$FONT_FILE")
-  BOXW=$((W * 58 / 100))
+  BOXW=$((W * 46 / 100))
 
   # 描邊層和填色層要分開畫再疊；同時下 -fill 和 -stroke 會把中文筆劃吃掉。
   # 每步都要 +repage，否則 -composite 之後會留下錯位殘影。
@@ -59,12 +59,20 @@ if [ -n "$TITLE" ]; then
     *) echo "位置只能是 left / right / center" >&2; exit 1 ;;
   esac
 
-  # 文字那側壓一層深色漸層，字才不會被背景吃掉
-  "$IM" "$TMP/base.jpg" \
-    \( -size "$((W/2))x${H}" gradient:'#000000CC-#00000000' \
-       $([ "$POS" = right ] && echo -flop) \) \
-    -gravity "$([ "$POS" = right ] && echo east || echo west)" -composite +repage "$TMP/dim.jpg"
-  [ "$POS" = center ] && cp "$TMP/base.jpg" "$TMP/dim.jpg"
+  # 文字那側壓一層深色漸層，字才不會被背景吃掉。
+  # 注意: ImageMagick 的 gradient: 只會由上往下，要做左右漸層得先轉 90 度；
+  # 而且帶 alpha 的顏色轉完會掉透明度，所以改成「純黑 + 灰階遮罩當 alpha」。
+  GW=$((W * 55 / 100))
+  "$IM" -size "${GW}x${H}" xc:black \
+    \( -size "${H}x${GW}" gradient:black-gray80 -rotate 90 +repage \) \
+    -alpha off -compose CopyOpacity -composite +repage "PNG32:$TMP/scrim.png"
+  [ "$POS" = right ] && "$IM" "$TMP/scrim.png" -flop +repage "PNG32:$TMP/scrim.png"
+  if [ "$POS" = center ]; then
+    "$IM" "$TMP/base.jpg" -fill black -colorize 35% "$TMP/dim.jpg"
+  else
+    "$IM" "$TMP/base.jpg" "$TMP/scrim.png" \
+      -gravity "$([ "$POS" = right ] && echo east || echo west)" -composite +repage "$TMP/dim.jpg"
+  fi
 
   "$IM" "$TMP/dim.jpg" "$TMP/txt.png" -gravity "$GRAV" -geometry "$OFF" \
         -composite +repage -quality 92 "$OUT"

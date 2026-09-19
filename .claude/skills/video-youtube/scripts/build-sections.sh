@@ -10,11 +10,12 @@
 #   --keep          保留中間檔
 #
 # sections.txt 每行一段，用 | 分隔，# 開頭是註解:
-#   影片檔 | 章節標題 | 開始秒 | 結束秒 | 副標
-#   開始/結束/副標 可留空
+#   影片檔 | 章節標題 | 開始秒 | 結束秒 | 副標 | 速度
+#   開始/結束/副標/速度 都可留空。速度 1=原速, 2=兩倍快轉, 0.5=放慢一半
 # 例:
-#   onboarding.mp4 | 建立學習檔案 | 0 | 32 | 系統先問你怎麼學
-#   sequencing.mp4 | 循序提問     | 4 | 48 |
+#   onboarding.mp4 | 建立學習檔案 | 0 | 32 | 系統先問你怎麼學 |
+#   sequencing.mp4 | 循序提問     | 4 | 48 |                  | 1.5
+#   drawing.mp4    | 問題是什麼   | 4 | 56 | 手繪縮時          | 2.6
 set -euo pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/_shared.sh"
 
@@ -85,16 +86,20 @@ ACC=0; N=0
 while IFS= read -r line || [ -n "$line" ]; do
   line="${line%%$'\r'}"
   case "$line" in ''|'#'*) continue ;; esac
-  IFS='|' read -r CLIP TITLE SS TO SUB <<< "$line"
+  IFS='|' read -r CLIP TITLE SS TO SUB SPEED <<< "$line"
   CLIP="$(echo "$CLIP" | xargs)"; TITLE="$(echo "${TITLE:-}" | xargs)"
   SS="$(echo "${SS:-}" | xargs)"; TO="$(echo "${TO:-}" | xargs)"; SUB="$(echo "${SUB:-}" | xargs)"
+  SPEED="$(echo "${SPEED:-}" | xargs)"; SPEED="${SPEED:-1}"
   [ -f "$CLIP" ] || { echo "找不到素材: $CLIP" >&2; exit 1; }
   N=$((N+1))
 
-  # 章節時間 = 標題卡開始的位置（觀眾點章節會從卡片看起，比較順）
-  printf '%s %s\n' "$(python3 -c "
+  # 章節時間 = 標題卡開始的位置（觀眾點章節會從卡片看起，比較順）。
+  # 標題留空的段落是「接續前一段」，不另外開一個章節。
+  if [ -n "$TITLE" ]; then
+    printf '%s %s\n' "$(python3 -c "
 s=int(round($ACC)); h,r=divmod(s,3600); m,x=divmod(r,60)
-print(f'{h}:{m:02d}:{x:02d}' if h else f'{m}:{x:02d}')")" "${TITLE:-段落 $N}" >> "$CHAP"
+print(f'{h}:{m:02d}:{x:02d}' if h else f'{m}:{x:02d}')")" "$TITLE" >> "$CHAP"
+  fi
 
   if [ "$CARDS" -eq 1 ] && [ -n "$TITLE" ]; then
     echo "  [$N] 標題卡「$TITLE」"
@@ -106,12 +111,28 @@ print(f'{h}:{m:02d}:{x:02d}' if h else f'{m}:{x:02d}')")" "${TITLE:-段落 $N}" 
   TRIM=()
   [ -n "$SS" ] && TRIM+=(-ss "$SS")
   [ -n "$TO" ] && TRIM+=(-to "$TO")
-  echo "  [$N] $CLIP ${SS:+從 ${SS}s}${TO:+ 到 ${TO}s}"
+  echo "  [$N] $CLIP ${SS:+從 ${SS}s}${TO:+ 到 ${TO}s}$([ "$SPEED" != "1" ] && echo " 速度 ${SPEED}x")"
+
+  VSPEED=""; [ "$SPEED" != "1" ] && VSPEED=",setpts=PTS/${SPEED}"
+  VF="[0:v]scale=${W}:${H}:force_original_aspect_ratio=decrease,\
+pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1${VSPEED},fps=${FPS}[v]"
+  AMAP=(-map 0:a?)
+  if [ "$SPEED" != "1" ] && has_audio "$CLIP"; then
+    # atempo 單次只吃 0.5~2.0，超出範圍要串接好幾層
+    ACHAIN="$(python3 -c "
+s=float('$SPEED'); parts=[]
+while s > 2.0: parts.append('atempo=2.0'); s/=2.0
+while s < 0.5: parts.append('atempo=0.5'); s/=0.5
+parts.append(f'atempo={s:.6f}')
+print(','.join(parts))")"
+    VF="${VF};[0:a]${ACHAIN}[a]"
+    AMAP=(-map "[a]")
+  fi
+
   # -ss 放在 -i 前面是快速定位，但要精準切就得重新編碼（本來就要轉檔所以沒差）
   ffmpeg -nostdin -y -v error "${TRIM[@]}" -i "$CLIP" \
-    -filter_complex "[0:v]scale=${W}:${H}:force_original_aspect_ratio=decrease,\
-pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1,fps=${FPS}[v]" \
-    -map "[v]" -map 0:a? -map_metadata -1 "${norm_args[@]}" "$WORK/seg_${N}.mp4"
+    -filter_complex "$VF" \
+    -map "[v]" "${AMAP[@]}" -map_metadata -1 "${norm_args[@]}" "$WORK/seg_${N}.mp4"
 
   # 原始素材沒有聲音的話補一軌靜音，不然 concat 會少一軌
   if ! has_audio "$WORK/seg_${N}.mp4"; then

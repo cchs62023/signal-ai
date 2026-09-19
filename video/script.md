@@ -1,99 +1,138 @@
-# Signal AI — 3-Minute Demo Script
+# Signal AI — narration script, timed to the cut
 
-Actual narration, as provided. `[brackets]` are on-screen actions, not spoken.
+Picture-locked cut: `signal_demo_youtube.mp4` — **2:53**, 1920x1080, silent.
+All source footage had no usable audio, so record over this and the timings line up.
 
-Spoken total ≈ 1:51. With 5 title cards (2.5s each) the finished video lands
-around **2:03** — comfortably inside 3 minutes.
+Each chapter opens with a **2.5s title card**. Start speaking when the card clears.
+
+| # | Chapter | Card | Speak from | to | Window | Words that fit |
+|---|---|---|---|---|---|---|
+| 1 | The problem | 0:00 | 0:02.5 | 0:20 | 17.5s | ~40 |
+| 2 | Signal in the background | 0:20 | 0:22.5 | 0:49 | 26.5s | ~62 |
+| 3 | One decision | 0:49 | 0:51.5 | 1:03 | 11.5s | ~27 |
+| 4 | Where the info came from | 1:03 | 1:05.5 | 1:23 | 17.5s | ~40 |
+| 5 | Ask and decide | 1:23 | 1:25.5 | 1:53 | 27.5s | ~64 |
+| 6 | Who decides what | 1:53 | 1:55.5 | 2:10 | 14.5s | ~34 |
+| 7 | The call is yours | 2:10 | 2:12.5 | 2:25 | 12.5s | ~29 |
+| 8 | How it was built | 2:25 | 2:27.5 | 2:53 | 25.5s | ~59 |
+
+"Words that fit" is at 140 wpm — a natural pace with room to breathe.
+
+> **Your sections 4 and 5 are swapped here.** In the footage you ask Sarah and apply her
+> reply *first* (0:50–1:17 of the source), and the stakeholder map comes *after* (1:17–1:32).
+> I kept the footage order rather than re-cutting, because at 1:11 the project flips to
+> "BLOCKED — VERIFIED" and the banner changes to "Security has now answered directly" —
+> showing the stakeholder view before the ask would display a state that hasn't happened yet.
 
 ---
 
-## 1. Signal in the background — 35s
+## 1. The problem — 0:02.5, 17.5s *(new — you had no script for this)*
 
-> Let me start by connecting my work tools. `[Connect Zoom]`
-> I'll add Zoom, `[Connect Gmail]` and Gmail.
-> Signal only sees what I already have access to. `[Continue]`
-> Now it moves to the corner and stays out of the way. `[Click Zoom in the dock]`
-> When I'm in a meeting, it listens. `[Click Gmail, Jira, Slack]`
+> A manager doesn't lack information. They're drowning in it.
+> Jira, Gmail, Slack, a Zoom call — every one of them carries a piece of the same decision.
+> None of them carries the decision itself.
+
+38 words.
+
+---
+
+## 2. Signal in the background — 0:22.5, 26.5s
+
+> Let me start by connecting my work tools. I'll add Zoom, and Gmail.
+> Signal only sees what I already have access to.
+> Now it moves to the corner and stays out of the way.
+> When I'm in a meeting, it listens.
 > As I go through email, Jira and Slack, it picks up anything related to my projects.
 > See the number going up? That's Signal collecting updates.
 
-66 words, 5 on-screen actions.
+66 words — 149 wpm. Brisk. If it feels rushed, cut
+*"Signal only sees what I already have access to"* — section 5 makes the same trust point
+by showing Signal can't send without your approval.
 
 ---
 
-## 2. One decision — 13s
+## 3. One decision — 0:51.5, 11.5s
 
-> Let's see what it found. `[Click the orb]`
-> It's flagging one decision, whether to approve this storage project. `[Open project]`
+> Let's see what it found. It's flagging one decision, whether to approve this storage project.
 > It's on hold because security hasn't signed off yet.
 
-24 words, 2 actions.
+24 words — comfortable.
 
 ---
 
-## 3. Where the info came from — 21s
+## 4. Where the info came from — 1:05.5, 17.5s
 
-> Here's the part I care about most. `[Click Evidence]`
-> Jira says security is fine. `[Open 'Security should be okay']`
-> But let's check where that came from.
-> The security lead said something in a meeting, someone repeated it,
-> and then someone else wrote it down.
+> Here's the part I care about most. Jira says security is fine.
+> But let's check where that came from. The security lead said something in a meeting,
+> someone repeated it, and then someone else wrote it down.
 > She never actually approved it.
 
-42 words, 2 actions. The strongest moment in the demo — let the last line land
-before cutting.
+42 words. This section is **slowed to 0.7x** so the provenance chain is readable —
+let the last line land before the cut.
 
 ---
 
-## 4. Who decides what — 16s
+## 5. Ask and decide — 1:25.5, 27.5s
 
-> So who actually decides? `[Click Stakeholders]`
-> The CEO has the final say on priorities, but not on security.
+> Let's fix that. Signal writes the message for me, but it can't send it on its own.
+> I approve it, and it goes out.
+> While we wait, I can keep working. And here's her reply.
+> The project updates everywhere at once.
+
+47 words — comfortable, room to pause on the reply.
+
+*(Your original had "Signal suggests keeping it on hold, but the final call is mine" here.
+That line moved to section 7, where the Decision tab is actually on screen.)*
+
+---
+
+## 6. Who decides what — 1:55.5, 14.5s
+
+> So who actually decides? The CEO has the final say on priorities, but not on security.
 > Only the security lead can approve that.
 > Down here, Signal shows who hasn't weighed in yet.
 
-32 words, 1 action.
+32 words — comfortable.
 
 ---
 
-## 5. Ask and decide — 28s
+## 7. The call is yours — 2:12.5, 12.5s
 
-> Let's fix that. `[Click Ask Security]`
-> Signal writes the message for me, but it can't send it on its own. `[Approve & Send]`
-> I approve it, and it goes out.
-> While we wait, I can keep working. And here's her reply. `[Apply to project]`
-> The project updates everywhere at once. `[Click Decision]`
-> Signal suggests keeping it on hold, but the final call is mine.
+> Signal suggests keeping it on hold — with the reason, and the person, on the record.
+> But the final call is mine.
 
-53 words, 4 actions.
+24 words.
 
 ---
 
-## Timing note
+## 8. How it was built — 2:27.5, 25.5s *(new — you had no script for this)*
 
-The durations above are **revised up from the ones you gave**. Measured at a
-natural 130 words/min plus ~0.8s per on-screen action for the click to land:
+> The concept started on paper, then moved into Figma —
+> the decision authority map, source distance, voice coverage.
+> The design system came out of a conversation with ChatGPT,
+> and the working prototype was built in Claude Code.
+> Start to finish, the tools that made it are the same kind of tools it reads.
 
-| Section | You said | Realistic | Why |
-|---|---|---|---|
-| 1. Signal in the background | 20s | **35s** | 66 words + 5 clicks — 20s needs ~200 wpm, too fast to follow |
-| 2. One decision | 15s | 13s | fits, slightly short |
-| 3. Where the info came from | 30s | 21s | fits with room to pause |
-| 4. Who decides what | 20s | 16s | fits |
-| 5. Ask and decide | 30s | 28s | fits |
-| **Total** | 115s | **113s** | same overall, redistributed |
+57 words.
 
-Section 1 is the only real problem: it's a third of the words and a third of the
-clicks, squeezed into the shortest slot. The total stays the same because
-sections 3 and 4 had more room than they needed.
-
-If you want section 1 tighter, the cuttable line is
-"Signal only sees what I already have access to" — it's a trust point, but it
-repeats later in section 5 when Signal can't send without approval.
+---
 
 ## Recording notes
 
-- Record each section as its own file, so a fluffed line means one reshoot
-- Leave 2 seconds of silence between sections — makes lining up trivial
-- Perform the click, *then* speak; narrating over a UI transition reads as rushed
-- Run the recording through `transcribe.py` and the subtitles come for free
+- Record each section as its own file, named `01.wav` … `08.wav` — reshoot one, not all eight
+- Phone earbuds are fine; 15cm from your mouth, in a room without echo
+- Watch the cut while you read so your pace matches what's on screen
+- Leave the room tone running 2s before and after each take — makes cleanup easier
+
+## Putting the voiceover on
+
+```bash
+# after recording, concatenate in order with the right silence between sections
+# (or just record one continuous take against the video)
+ffmpeg -i signal_demo_youtube.mp4 -i narration.wav \
+  -map 0:v -map 1:a -c:v copy -c:a aac -b:a 384k -shortest with_vo.mp4
+
+# subtitles straight from the narration, then attach as a soft track
+python3 ../.claude/skills/video-edit/scripts/transcribe.py with_vo.mp4 --model small --lang en
+bash ../.claude/skills/video-youtube/scripts/soft-subs.sh with_vo.mp4 final.mp4 with_vo.srt eng
+```
