@@ -130,14 +130,31 @@
     mount();
   };
 
-  /* ---- fit the 1440x900 desktop to the viewport --------------- */
+  /* ---- fit the 1440x900 desktop to the viewport ---------------
+     #fit keeps its true 1440x900 layout size and is scaled about its
+     top-left corner; the centring offset is computed, not left to a
+     percentage translate (which resolves against the element's own box
+     and fought with the scale).                                      */
   function fit() {
-    var s = Math.min(window.innerWidth / 1440, window.innerHeight / 900);
+    var vv = window.visualViewport;
+    var w = vv ? vv.width : window.innerWidth;
+    var h = vv ? vv.height : window.innerHeight;
+    var s = Math.min(w / 1440, h / 900);
     var wrap = document.getElementById('fit');
-    wrap.style.transform = 'scale(' + s + ')';
-    wrap.style.width = 1440 * s + 'px';
-    wrap.style.height = 900 * s + 'px';
+    wrap.style.transform = 'translate(' + ((w - 1440 * s) / 2) + 'px,' +
+                           ((h - 900 * s) / 2) + 'px) scale(' + s + ')';
+    // below this width the desktop mock is too small to read; offer a way out
+    var small = document.getElementById('small');
+    if (small && !window.__signalForce) small.hidden = w >= 720;
   }
   window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', fit);
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'anyway') {
+      window.__signalForce = true;
+      document.getElementById('small').hidden = true;
+    }
+  });
   window.SIGNAL_FIT = fit;
 })();
