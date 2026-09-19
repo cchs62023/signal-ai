@@ -125,6 +125,222 @@ input,textarea,select{font-family:inherit}
 .s-rest .core{animation-name:coreRest;animation-duration:14.04s}
 @media (prefers-reduced-motion:reduce){.sig .orb,.sig .mo,.sig .dot,.sig .core{animation:none}}
 
+
+
+body{margin:0;font-family:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;-webkit-font-smoothing:antialiased}
+a{color:#215DB0}a:hover{color:#184A90}
+button{font-family:inherit;cursor:pointer;border:0;background:none;padding:0;color:inherit}
+input,textarea,select{font-family:inherit}
+.mono{font-family:'Archivo',-apple-system,sans-serif;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.card{background:#fff;border:1px solid #E3E3E3;border-radius:3px}
+.tag{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 6px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-family:'Archivo',sans-serif;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 12px;border-radius:3px;font-size:14px;font-weight:500;white-space:nowrap;border:1px solid #D4D4D4;background:#fff;color:#0E0E0E;transition:background .12s,border-color .12s}
+.btn:hover{background:#EFEFEF;border-color:#B0B0B0}
+.btn:focus-visible{outline:2px solid #0E0E0E;outline-offset:1px}
+.btn--pri{background:#0E0E0E;border-color:#0E0E0E;color:#fff}
+.btn--pri:hover{background:#2E2E2E;border-color:#2E2E2E}
+.btn--min{height:24px;padding:0 10px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tabbtn{height:30px;padding:0 12px;font-size:14px;font-weight:500;color:#6B6B6B;border-bottom:2px solid transparent;transition:color .12s}
+.tabbtn:hover{color:#0E0E0E;background:#F7F7F7}
+.tabbtn.on{color:#0E0E0E;border-bottom-color:#0E0E0E;font-weight:600}
+.row{display:flex;align-items:center}
+.scroll{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#D4D4D4 transparent}
+.scroll::-webkit-scrollbar{width:9px}
+.scroll::-webkit-scrollbar-thumb{background:#D4D4D4;border-radius:5px;border:3px solid #FAFAFA}
+.tipwrap{position:relative}
+.tip{position:absolute;opacity:0;pointer-events:none;transition:opacity .14s;background:#0E0E0E;color:#F7F7F7;font-size:11px;line-height:1.4;padding:6px 9px;border-radius:3px;white-space:nowrap;box-shadow:0 2px 8px rgba(16,22,26,.3);z-index:60}
+.tipwrap:hover .tip{opacity:1}
+.chip{background:#fff;border:1px solid #E3E3E3;border-radius:6px;padding:5px 11px;font-size:12.5px;font-weight:500;color:#0E0E0E;box-shadow:0 1px 3px rgba(16,22,26,.13)}
+.evrow{display:flex;gap:12px;width:100%;text-align:left;padding:10px 12px;border-radius:3px;border:1px solid transparent;transition:background .12s,border-color .12s}
+.evrow:hover{background:#F7F7F7;border-color:#E3E3E3}
+.dockbtn{transition:transform .16s cubic-bezier(.2,.8,.3,1)}
+.dockbtn:hover{transform:translateY(-6px) scale(1.06)}
+.connrow{display:flex;align-items:center;gap:11px;padding:10px 14px;border-top:1px solid #EFEFEF}
+@keyframes fly{0%{top:216px;left:646px;width:34px;height:34px;opacity:1}70%{opacity:1}100%{top:770px;left:1346px;width:58px;height:58px;opacity:1}}
+@keyframes dlg-out{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.93)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes orb-in{from{opacity:0}to{opacity:1}}
+@keyframes peek-in{from{opacity:0;transform:scale(.82) translate(34px,42px)}to{opacity:1;transform:none}}
+@keyframes room-in{from{opacity:.25;transform:scale(.24)}to{opacity:1;transform:scale(1)}}
+@keyframes drawer-in{from{transform:translateX(100%)}to{transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes toast-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+/* ---- Signal kinetic system -------------------------------------------
+   The mint disc is a plain unclassed circle: it never animates.
+   Everything that moves is a separate element inside the SVG.
+   Rotation lives on a wrapping group, compression on the ellipse inside
+   it, so the two never fight over the transform property.              */
+.sig .orb,.sig .mo,.sig .dot,.sig .core{transform-origin:50px 50px}
+.sig .orb,.sig .dot{animation-timing-function:linear;animation-iteration-count:infinite}
+.sig .mo,.sig .core{animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.sig .mo{stroke-opacity:.7}
+.sig .dot{opacity:0;transition:opacity .8s ease-in-out}
+@keyframes rA{from{transform:rotate(-18deg)}to{transform:rotate(342deg)}}
+@keyframes rB{from{transform:rotate(64deg)}to{transform:rotate(-296deg)}}
+@keyframes rC{from{transform:rotate(148deg)}to{transform:rotate(508deg)}}
+@keyframes rD{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes rE{from{transform:rotate(130deg)}to{transform:rotate(-230deg)}}
+@keyframes rF{from{transform:rotate(250deg)}to{transform:rotate(610deg)}}
+/* structural morphs: vertical -> diagonal -> horizontal, via scale on the ellipse only */
+@keyframes mA{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.30)}}
+@keyframes mB{0%,100%{transform:scaleY(.42)}50%{transform:scaleY(1.02)}}
+@keyframes mC{0%,100%{transform:scaleY(.88)}50%{transform:scaleY(.34)}}
+@keyframes mFlat{0%,100%{transform:scaleY(1) scaleX(.9)}50%{transform:scaleY(.20) scaleX(1.08)}}
+@keyframes coreBeat{0%,100%{transform:scale(1)}50%{transform:scale(.86)}}
+@keyframes coreRest{0%,100%{transform:scaleY(.32) scaleX(1.08)}}
+@keyframes restDrift{0%,100%{transform:rotate(-4deg) scaleY(.18)}50%{transform:rotate(4deg) scaleY(.22)}}
+/* ON EAR — tuning in: three orbits sweeping through orientations */
+.s-onear .oA{animation-name:rA;animation-duration:8.58s}
+.s-onear .oB{animation-name:rB;animation-duration:11.7s}
+.s-onear .oC{animation-name:rC;animation-duration:14.82s}
+.s-onear .mA{animation-name:mA;animation-duration:10.14s}
+.s-onear .mB{animation-name:mB;animation-duration:13.26s}
+.s-onear .mC{animation-name:mC;animation-duration:11.7s}
+.s-onear .dA{animation-name:rD;animation-duration:14.04s}
+.s-onear .dB{animation-name:rE;animation-duration:17.16s}
+.s-onear .dC{animation-name:rF;animation-duration:20.28s}
+.s-onear .dot{opacity:.35}
+/* DIGESTING — same system, more active; orbits flatten toward horizontal */
+.s-digest .oA{animation-name:rA;animation-duration:6.24s}
+.s-digest .oB{animation-name:rB;animation-duration:8.58s}
+.s-digest .oC{animation-name:rC;animation-duration:10.92s}
+.s-digest .mA{animation-name:mFlat;animation-duration:5.62s}
+.s-digest .mB{animation-name:mFlat;animation-duration:6.86s;animation-delay:-1.87s}
+.s-digest .mC{animation-name:mFlat;animation-duration:8.11s;animation-delay:-3.74s}
+.s-digest .dA{animation-name:rD;animation-duration:9.36s}
+.s-digest .dB{animation-name:rE;animation-duration:11.7s}
+.s-digest .dC{animation-name:rF;animation-duration:14.04s}
+.s-digest .dot{opacity:.6}
+.s-digest .core{animation-name:coreBeat;animation-duration:5.62s}
+/* ATTENTION — signal found: dots settle in at full weight, tempo eases back */
+.s-alert .oA{animation-name:rA;animation-duration:7.8s}
+.s-alert .oB{animation-name:rB;animation-duration:10.92s}
+.s-alert .oC{animation-name:rC;animation-duration:14.04s}
+.s-alert .mA{animation-name:mA;animation-duration:10.92s}
+.s-alert .mB{animation-name:mB;animation-duration:14.04s}
+.s-alert .mC{animation-name:mC;animation-duration:12.48s}
+.s-alert .dA{animation-name:rD;animation-duration:12.48s}
+.s-alert .dB{animation-name:rE;animation-duration:15.6s}
+.s-alert .dC{animation-name:rF;animation-duration:18.72s}
+.s-alert .dot{opacity:.7}
+/* REST — one calm horizontal ellipse, core flattened, dots gone */
+.s-rest .oA{animation-name:rD;animation-duration:40.56s}
+.s-rest .mA{animation-name:restDrift;animation-duration:14.04s}
+.s-rest .oB,.s-rest .oC{opacity:0}
+.s-rest .dot{opacity:0}
+.s-rest .core{animation-name:coreRest;animation-duration:14.04s}
+@media (prefers-reduced-motion:reduce){.sig .orb,.sig .mo,.sig .dot,.sig .core{animation:none}}
+
+
+
+body{margin:0;font-family:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;-webkit-font-smoothing:antialiased}
+a{color:#215DB0}a:hover{color:#184A90}
+button{font-family:inherit;cursor:pointer;border:0;background:none;padding:0;color:inherit}
+input,textarea,select{font-family:inherit}
+.mono{font-family:'Archivo',-apple-system,sans-serif;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.card{background:#fff;border:1px solid #E3E3E3;border-radius:3px}
+.tag{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 6px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-family:'Archivo',sans-serif;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 12px;border-radius:3px;font-size:14px;font-weight:500;white-space:nowrap;border:1px solid #D4D4D4;background:#fff;color:#0E0E0E;transition:background .12s,border-color .12s}
+.btn:hover{background:#EFEFEF;border-color:#B0B0B0}
+.btn:focus-visible{outline:2px solid #0E0E0E;outline-offset:1px}
+.btn--pri{background:#0E0E0E;border-color:#0E0E0E;color:#fff}
+.btn--pri:hover{background:#2E2E2E;border-color:#2E2E2E}
+.btn--min{height:24px;padding:0 10px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tabbtn{height:30px;padding:0 12px;font-size:14px;font-weight:500;color:#6B6B6B;border-bottom:2px solid transparent;transition:color .12s}
+.tabbtn:hover{color:#0E0E0E;background:#F7F7F7}
+.tabbtn.on{color:#0E0E0E;border-bottom-color:#0E0E0E;font-weight:600}
+.row{display:flex;align-items:center}
+.scroll{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#D4D4D4 transparent}
+.scroll::-webkit-scrollbar{width:9px}
+.scroll::-webkit-scrollbar-thumb{background:#D4D4D4;border-radius:5px;border:3px solid #FAFAFA}
+.tipwrap{position:relative}
+.tip{position:absolute;opacity:0;pointer-events:none;transition:opacity .14s;background:#0E0E0E;color:#F7F7F7;font-size:11px;line-height:1.4;padding:6px 9px;border-radius:3px;white-space:nowrap;box-shadow:0 2px 8px rgba(16,22,26,.3);z-index:60}
+.tipwrap:hover .tip{opacity:1}
+.chip{background:#fff;border:1px solid #E3E3E3;border-radius:6px;padding:5px 11px;font-size:12.5px;font-weight:500;color:#0E0E0E;box-shadow:0 1px 3px rgba(16,22,26,.13)}
+.evrow{display:flex;gap:12px;width:100%;text-align:left;padding:10px 12px;border-radius:3px;border:1px solid transparent;transition:background .12s,border-color .12s}
+.evrow:hover{background:#F7F7F7;border-color:#E3E3E3}
+.dockbtn{transition:transform .16s cubic-bezier(.2,.8,.3,1)}
+.dockbtn:hover{transform:translateY(-6px) scale(1.06)}
+.connrow{display:flex;align-items:center;gap:11px;padding:10px 14px;border-top:1px solid #EFEFEF}
+@keyframes fly{0%{top:216px;left:646px;width:34px;height:34px;opacity:1}70%{opacity:1}100%{top:770px;left:1346px;width:58px;height:58px;opacity:1}}
+@keyframes dlg-out{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.93)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes orb-in{from{opacity:0}to{opacity:1}}
+@keyframes peek-in{from{opacity:0;transform:scale(.82) translate(34px,42px)}to{opacity:1;transform:none}}
+@keyframes room-in{from{opacity:.25;transform:scale(.24)}to{opacity:1;transform:scale(1)}}
+@keyframes drawer-in{from{transform:translateX(100%)}to{transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes toast-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+/* ---- Signal kinetic system -------------------------------------------
+   The mint disc is a plain unclassed circle: it never animates.
+   Everything that moves is a separate element inside the SVG.
+   Rotation lives on a wrapping group, compression on the ellipse inside
+   it, so the two never fight over the transform property.              */
+.sig .orb,.sig .mo,.sig .dot,.sig .core{transform-origin:50px 50px}
+.sig .orb,.sig .dot{animation-timing-function:linear;animation-iteration-count:infinite}
+.sig .mo,.sig .core{animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.sig .mo{stroke-opacity:.7}
+.sig .dot{opacity:0;transition:opacity .8s ease-in-out}
+@keyframes rA{from{transform:rotate(-18deg)}to{transform:rotate(342deg)}}
+@keyframes rB{from{transform:rotate(64deg)}to{transform:rotate(-296deg)}}
+@keyframes rC{from{transform:rotate(148deg)}to{transform:rotate(508deg)}}
+@keyframes rD{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes rE{from{transform:rotate(130deg)}to{transform:rotate(-230deg)}}
+@keyframes rF{from{transform:rotate(250deg)}to{transform:rotate(610deg)}}
+/* structural morphs: vertical -> diagonal -> horizontal, via scale on the ellipse only */
+@keyframes mA{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.30)}}
+@keyframes mB{0%,100%{transform:scaleY(.42)}50%{transform:scaleY(1.02)}}
+@keyframes mC{0%,100%{transform:scaleY(.88)}50%{transform:scaleY(.34)}}
+@keyframes mFlat{0%,100%{transform:scaleY(1) scaleX(.9)}50%{transform:scaleY(.20) scaleX(1.08)}}
+@keyframes coreBeat{0%,100%{transform:scale(1)}50%{transform:scale(.86)}}
+@keyframes coreRest{0%,100%{transform:scaleY(.32) scaleX(1.08)}}
+@keyframes restDrift{0%,100%{transform:rotate(-4deg) scaleY(.18)}50%{transform:rotate(4deg) scaleY(.22)}}
+/* ON EAR — tuning in: three orbits sweeping through orientations */
+.s-onear .oA{animation-name:rA;animation-duration:8.58s}
+.s-onear .oB{animation-name:rB;animation-duration:11.7s}
+.s-onear .oC{animation-name:rC;animation-duration:14.82s}
+.s-onear .mA{animation-name:mA;animation-duration:10.14s}
+.s-onear .mB{animation-name:mB;animation-duration:13.26s}
+.s-onear .mC{animation-name:mC;animation-duration:11.7s}
+.s-onear .dA{animation-name:rD;animation-duration:14.04s}
+.s-onear .dB{animation-name:rE;animation-duration:17.16s}
+.s-onear .dC{animation-name:rF;animation-duration:20.28s}
+.s-onear .dot{opacity:.35}
+/* DIGESTING — same system, more active; orbits flatten toward horizontal */
+.s-digest .oA{animation-name:rA;animation-duration:6.24s}
+.s-digest .oB{animation-name:rB;animation-duration:8.58s}
+.s-digest .oC{animation-name:rC;animation-duration:10.92s}
+.s-digest .mA{animation-name:mFlat;animation-duration:5.62s}
+.s-digest .mB{animation-name:mFlat;animation-duration:6.86s;animation-delay:-1.87s}
+.s-digest .mC{animation-name:mFlat;animation-duration:8.11s;animation-delay:-3.74s}
+.s-digest .dA{animation-name:rD;animation-duration:9.36s}
+.s-digest .dB{animation-name:rE;animation-duration:11.7s}
+.s-digest .dC{animation-name:rF;animation-duration:14.04s}
+.s-digest .dot{opacity:.6}
+.s-digest .core{animation-name:coreBeat;animation-duration:5.62s}
+/* ATTENTION — signal found: dots settle in at full weight, tempo eases back */
+.s-alert .oA{animation-name:rA;animation-duration:7.8s}
+.s-alert .oB{animation-name:rB;animation-duration:10.92s}
+.s-alert .oC{animation-name:rC;animation-duration:14.04s}
+.s-alert .mA{animation-name:mA;animation-duration:10.92s}
+.s-alert .mB{animation-name:mB;animation-duration:14.04s}
+.s-alert .mC{animation-name:mC;animation-duration:12.48s}
+.s-alert .dA{animation-name:rD;animation-duration:12.48s}
+.s-alert .dB{animation-name:rE;animation-duration:15.6s}
+.s-alert .dC{animation-name:rF;animation-duration:18.72s}
+.s-alert .dot{opacity:.7}
+/* REST — one calm horizontal ellipse, core flattened, dots gone */
+.s-rest .oA{animation-name:rD;animation-duration:40.56s}
+.s-rest .mA{animation-name:restDrift;animation-duration:14.04s}
+.s-rest .oB,.s-rest .oC{opacity:0}
+.s-rest .dot{opacity:0}
+.s-rest .core{animation-name:coreRest;animation-duration:14.04s}
+@media (prefers-reduced-motion:reduce){.sig .orb,.sig .mo,.sig .dot,.sig .core{animation:none}}
+
 </style>
 </head>
 <body>
@@ -377,7 +593,7 @@ input,textarea,select{font-family:inherit}
     <div style="position:absolute;right:34px;bottom:70px;z-index:40;display:flex;align-items:center;gap:11px;animation:orb-in .5s cubic-bezier(.2,.9,.3,1)">
       <span class="chip">{{ chipText }}</span>
       <div class="tipwrap {{ orbCls }}" style="position:relative">
-        <button onClick="{{ openSignal }}" onContextMenu="{{ onCtx }}" aria-label="{{ orbAria }}" style="display:block;width:60px;height:60px;border-radius:50%;filter:drop-shadow(0 5px 14px rgba(8,32,22,.34))"><svg data-keep="orb" viewBox="0 0 100 100" class="sig {{ orbState }}" style="width:100%;height:100%;display:block" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#A5F2CC"/><g class="orb oA"><ellipse class="mo mA" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="orb oB"><ellipse class="mo mB" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="orb oC"><ellipse class="mo mC" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="dot dA"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><g class="dot dB"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><g class="dot dC"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><ellipse class="core" cx="50" cy="50" rx="8.4" ry="8.4" fill="#fff"/></svg></button>
+        <button onClick="{{ openSignal }}" onContextMenu="{{ onCtx }}" aria-label="{{ orbAria }}" style="display:block;width:60px;height:60px;border-radius:50%;filter:drop-shadow(0 5px 14px rgba(8,32,22,.34))"><svg viewBox="0 0 100 100" class="sig {{ orbState }}" style="width:100%;height:100%;display:block" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#A5F2CC"/><g class="orb oA"><ellipse class="mo mA" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="orb oB"><ellipse class="mo mB" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="orb oC"><ellipse class="mo mC" cx="50" cy="50" rx="37" ry="16" fill="none" stroke="#111111" stroke-width="2.4"/></g><g class="dot dA"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><g class="dot dB"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><g class="dot dC"><circle cx="86" cy="50" r="2.9" fill="#111111"/></g><ellipse class="core" cx="50" cy="50" rx="8.4" ry="8.4" fill="#fff"/></svg></button>
                 <span class="tip" style="right:74px;bottom:16px;max-width:240px;white-space:normal">{{ orbTip }}</span>
       </div>
     </div>
@@ -504,11 +720,11 @@ input,textarea,select{font-family:inherit}
       </div>
 
       <!-- tab content -->
-      <div class="scroll" style="flex-grow:1;min-height:0;padding:20px;background:#FAFAFA">
+      <div class="scroll" data-tabkey="{{ tabKey }}" style="flex-grow:1;min-height:0;padding:20px;background:#FAFAFA">
 
       <!-- ---------- OVERVIEW ---------- -->
       <sc-if value="{{ tabOverview }}" hint-placeholder-val="{{ true }}">
-      <div style="animation:rise .22s ease">
+      <div>
         <div style="display:grid;grid-template-columns:1.16fr 1fr 1fr;gap:15px;align-items:stretch">
 
           <!-- CURRENT DECISION -->
@@ -626,7 +842,7 @@ input,textarea,select{font-family:inherit}
 
       <!-- ---------- TIMELINE ---------- -->
       <sc-if value="{{ tabTimeline }}" hint-placeholder-val="{{ true }}">
-      <div style="animation:rise .22s ease">
+      <div>
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
           <h2 style="margin:0;font-size:14px;font-weight:600">Cross-app project timeline</h2>
           <span style="font-size:12px;color:#6B6B6B">Newest first, from 4 tools &mdash; select an event to open its evidence.</span>
@@ -658,7 +874,7 @@ input,textarea,select{font-family:inherit}
 
       <!-- ---------- EVIDENCE / SOURCE DISTANCE ---------- -->
       <sc-if value="{{ tabEvidence }}" hint-placeholder-val="{{ true }}">
-      <div style="animation:rise .22s ease">
+      <div>
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
           <h2 style="margin:0;font-size:14px;font-weight:600">Source distance</h2>
           <span style="font-size:12px;color:#6B6B6B">How far each statement has travelled from the person who actually said it.</span>
@@ -744,7 +960,7 @@ input,textarea,select{font-family:inherit}
 
       <!-- ---------- STAKEHOLDERS ---------- -->
       <sc-if value="{{ tabStake }}" hint-placeholder-val="{{ true }}">
-      <div style="animation:rise .22s ease">
+      <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
           <h2 style="margin:0;font-size:14px;font-weight:600">Decision authority &amp; voice coverage</h2>
           <span style="flex-grow:1"></span>
@@ -888,7 +1104,7 @@ input,textarea,select{font-family:inherit}
 
       <!-- ---------- DECISION ---------- -->
       <sc-if value="{{ tabDecision }}" hint-placeholder-val="{{ true }}">
-      <div style="animation:rise .22s ease">
+      <div>
 
         <sc-if value="{{ notDecided }}" hint-placeholder-val="{{ true }}">
         <div style="max-width:780px;margin:0 auto">
@@ -1445,6 +1661,7 @@ class Component extends DCLogic {
     v.tabs = tabDefs.map(function (t) {
       return { label:t[1], cls: s.tab === t[0] ? 'on' : '', go: function () { self.setState({ tab:t[0] }); } };
     });
+    v.tabKey = s.tab;
     v.tabOverview = s.tab === 'overview'; v.tabTimeline = s.tab === 'timeline';
     v.tabEvidence = s.tab === 'evidence'; v.tabStake = s.tab === 'stakeholders'; v.tabDecision = s.tab === 'decision';
     v.goDecision = function () { self.setState({ tab:'decision' }); };
