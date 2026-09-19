@@ -1,0 +1,18 @@
+# Signal AI — YouTube 3 分鐘 demo 的段落設定
+#
+# 格式: 影片檔 | 章節標題 | 開始秒 | 結束秒 | 副標
+# 開始/結束留空 = 用整段。改完直接跑:
+#   bash ../.claude/skills/video-youtube/scripts/make-youtube.sh --sections sections.txt \
+#     -o signal_demo_youtube.mp4 --title "Signal AI" --sub "會跟著你學的 AI 助理"
+#
+# 下面的秒數是「3 分鐘怎麼分配」的建議值，不是從你的素材量出來的。
+# 先跑這行看每段實際多長，再把數字調準:
+#   for f in *.mp4; do printf "%-22s %ss\n" "$f" "$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" | cut -d. -f1)"; done
+#
+# 時間預算: 5 張標題卡 x 2.5s = 12.5s，影片本身約 165s，合計約 2 分 58 秒。
+
+onboarding.mp4 | 先認識你怎麼學   | 0 | 30 | Learning Profile Onboarding
+sequencing.mp4 | 一題一題往下問   | 0 | 45 | Sequential Question Handling
+format.mp4     | 換你要的呈現方式 | 0 | 28 | Format Customization
+trust.mp4      | 每句話都能查證   | 0 | 32 | Trust Indicators & Verification
+reflection.mp4 | 反問你，不只給答案 | 0 | 30 | Critical Thinking & Reflection
