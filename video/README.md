@@ -36,7 +36,7 @@ bash ../.claude/skills/video-youtube/scripts/make-youtube.sh \
   --sections sections.txt \
   -o signal_demo_youtube.mp4 \
   --title "Signal AI" \
-  --sub "會跟著你學的 AI 助理"
+  --sub "The assistant that learns how you learn"
 ```
 
 會產出：
@@ -51,7 +51,7 @@ bash ../.claude/skills/video-youtube/scripts/make-youtube.sh \
 
 ## 講稿
 
-`script.md` 是五段的講稿初稿。第 5 段請換成你手上已有的那份。
+`script.md` 是五段的英文講稿初稿。第 5 段請換成你手上已有的那份。
 
 錄好旁白之後，把音軌換上去再跑一次輸出：
 
@@ -61,8 +61,8 @@ ffmpeg -i signal_demo_youtube.mp4 -i narration.mp3 \
   -map 0:v -map 1:a -c:v copy -c:a aac -b:a 384k -shortest with_vo.mp4
 
 # 字幕重新產生（這次是照旁白，會比原始素材準很多）
-python3 ../.claude/skills/video-edit/scripts/transcribe.py with_vo.mp4 --model small --lang zh
-bash ../.claude/skills/video-youtube/scripts/soft-subs.sh with_vo.mp4 final.mp4 with_vo.srt zho
+python3 ../.claude/skills/video-edit/scripts/transcribe.py with_vo.mp4 --model small --lang en
+bash ../.claude/skills/video-youtube/scripts/soft-subs.sh with_vo.mp4 final.mp4 with_vo.srt eng
 ```
 
 ## 目前的時間分配
@@ -70,11 +70,11 @@ bash ../.claude/skills/video-youtube/scripts/soft-subs.sh with_vo.mp4 final.mp4 
 | 段落 | 長度 | 累計 |
 |---|---|---|
 | 標題卡 ×5 | 2.5s each = 12.5s | |
-| 先認識你怎麼學 | 30s | 0:32 |
-| 一題一題往下問 | 45s | 1:20 |
-| 換你要的呈現方式 | 28s | 1:50 |
-| 每句話都能查證 | 32s | 2:25 |
-| 反問你，不只給答案 | 30s | 2:58 |
+| Learns how you learn | 30s | 0:32 |
+| Follows your train of thought | 45s | 1:20 |
+| Your format, your call | 28s | 1:50 |
+| Every claim, checkable | 32s | 2:25 |
+| It asks you back | 30s | 2:58 |
 
 `sequencing` 給了最多時間，因為那是產品的核心；其他段落盡量壓短，
 讓整支片的節奏不要平。

@@ -1,102 +1,118 @@
-# Signal AI — 3 分鐘 Demo 講稿（初稿）
+# Signal AI — 3-Minute Demo Script (draft)
 
-總長目標 **2 分 58 秒**。每段開頭有 2.5 秒標題卡，講稿從卡片結束後開始念。
+Target runtime **2:58**. Each section opens with a 2.5s title card; narration starts
+once the card clears.
 
-> 這份是依五段素材的功能名稱寫的初稿，**還沒對過你實際畫面上的操作**。
-> 第 5 段你已經有我先前擬的稿，請以那份為準，我再把其他四段的語氣調成一致。
-> 每段的字數都抓在「唸完剛好等於該段秒數」的長度（中文口播約每秒 4.5 字）。
+> Written from the five clips' feature names — **not yet checked against what actually
+> happens on screen**. Section 5 already has the script I drafted for you earlier;
+> swap that in and I'll match the other four to its tone.
+>
+> Each section is sized to be read in its allotted time at a natural pace
+> (~150 words/min). Word counts are noted per section.
 
 ---
 
-## 開場（第 1 段標題卡之前，約 8 秒）
+## Cold open (before the first title card, ~8s, 20 words)
 
-> 大部分的 AI 助理，是你問什麼、它答什麼。
-> Signal 不太一樣 —— 它會先搞清楚你是怎麼學的。
-
----
-
-## 1. 先認識你怎麼學（0:00–0:32｜約 30 秒）
-
-> 第一次開啟 Signal，它不會直接丟一個輸入框給你。
-> 它會先問幾個問題：你習慣先看結論還是先看脈絡、你能接受多長的說明、
-> 這個主題你已經懂到哪裡。
->
-> 這些答案會變成你的學習檔案。
-> 之後每一次回答，都是照這份檔案調整過的 —— 不是同一套說法套給所有人。
-
-**畫面重點**：onboarding 問題選項 → 生成的 profile 卡片
+> Most AI assistants wait for you to ask.
+> Signal starts somewhere else — by working out how you actually learn.
 
 ---
 
-## 2. 一題一題往下問（0:32–1:20｜約 45 秒）
+## 1. Learns how you learn (0:00–0:32 | ~30s, 75 words)
 
-> 真正在學東西的時候，問題很少是一次問完的。
+> The first time you open Signal, there's no blank prompt box.
 >
-> 你問第一題，它回答。你接著追問細節，它記得前面講過什麼，
-> 不會把你當成剛進門的陌生人重講一次。
+> It asks you a few things first. Do you want the conclusion up front, or the
+> reasoning that gets you there? How much detail is useful before it becomes noise?
+> How much of this subject do you already know?
 >
-> 更重要的是，它會判斷這一題跟上一題的關係 ——
-> 是你沒聽懂要換個說法，還是你懂了要往下一層走。
-> 這兩種情況，它給的東西完全不一樣。
->
-> 這段是整個產品最核心的地方：對話不是一問一答，是一條有方向的線。
+> Those answers become your learning profile. Every response after that is shaped
+> by it — not one explanation handed to everyone.
 
-**畫面重點**：連續追問 3 輪 → 標示出它引用了前文的地方
+**On screen**: onboarding questions → generated profile card
 
 ---
 
-## 3. 換你要的呈現方式（1:20–1:50｜約 28 秒）
+## 2. Follows your train of thought (0:32–1:20 | ~45s, 112 words)
 
-> 同一個答案，不是每個人都想用同一種形式看。
+> When you're actually learning something, you rarely get it in one question.
 >
-> 你可以要它整理成表格、變成條列、縮成三句話，
-> 或是反過來，把它展開成一步一步的說明。
+> You ask. It answers. You push on a detail — and it remembers what it just told you,
+> instead of starting over like you walked in cold.
 >
-> 換格式不用重問一次，內容是同一份，只是換個樣子給你。
+> Here's the part that matters. It works out *why* you're asking again.
+> Did the explanation miss, and you need it framed differently?
+> Or did it land, and you're ready to go a level deeper?
+>
+> Those two need completely different answers, and Signal tells them apart.
+>
+> This is the core of the product: a conversation with a direction, not a
+> sequence of unrelated replies.
 
-**畫面重點**：同一個回答切換成表格 / 條列 / 摘要
+**On screen**: three follow-ups in a row → highlight where it references earlier turns
 
 ---
 
-## 4. 每句話都能查證（1:50–2:25｜約 32 秒）
+## 3. Your format, your call (1:20–1:50 | ~28s, 70 words)
 
-> AI 講得很有自信，不代表它是對的。這件事我們沒打算迴避。
+> The same answer doesn't work in the same shape for everyone.
 >
-> Signal 的每一段回答都會標上依據：哪裡來的、可信度多高、
-> 哪些部分它其實沒有把握。
+> Ask for it as a table. As bullets. Cut down to three sentences.
+> Or the other way — opened up into step by step.
 >
-> 你可以直接點開來源自己看。
-> 沒有把握的地方它會講出來，而不是用流暢的句子蓋過去。
+> You don't re-ask the question to change the format. It's the same answer,
+> handed to you differently.
 >
-> 一個會學習的工具，前提是你能檢查它。
+> Which sounds small, until you're trying to revise from something you read last week,
+> and the wall of prose you needed back then is now the thing standing in your way.
 
-**畫面重點**：trust indicator 標示 → 展開來源 → 低信心段落的提示
+**On screen**: one answer switching between table / bullets / summary
 
 ---
 
-## 5. 反問你，不只給答案（2:25–2:58｜約 30 秒）
+## 4. Every claim, checkable (1:50–2:25 | ~32s, 80 words)
 
-> （這段請用你手上已有的那份講稿，我會把語氣接上去。）
+> An AI sounding confident tells you nothing about whether it's right.
+> We'd rather not paper over that.
 >
-> 佔位方向：學會一件事不是把答案收下來，是能自己講一次。
-> 所以 Signal 會反過來問你 —— 你覺得為什麼是這樣、
-> 這個結論在什麼情況下會不成立。
+> Every response in Signal carries its basis: where it came from, how solid it is,
+> and which parts it isn't sure about.
 >
-> 答得出來，才算真的學會了。
+> Open any source and read it yourself. Where confidence is low, it says so —
+> instead of smoothing over the gap with a well-formed sentence.
+>
+> A tool you can learn from is a tool you can check.
 
-**畫面重點**：reflection prompt 出現 → 使用者作答 → 系統回饋
+**On screen**: trust indicators → expand a source → low-confidence flag
 
 ---
 
-## 結尾（最後 5 秒，可用最後一張卡）
+## 5. It asks you back (2:25–2:58 | ~30s, 75 words)
 
-> Signal AI —— 不只是回答你，是幫你真的學會。
+> *(Use the script you already have for this section — I'll match the rest to it.)*
+>
+> Placeholder direction: taking an answer isn't the same as learning it.
+> You've learned it when you can put it back in your own words.
+>
+> So Signal turns the question around. Why do you think it works this way?
+> Where would this stop being true?
+>
+> Answer those, and it stuck.
+
+**On screen**: reflection prompt → user responds → system feedback
 
 ---
 
-## 錄音小建議
+## Close (final ~5s, 12 words)
 
-- 用手機耳機的麥克風就夠，重點是**離嘴 15 公分、房間不要有回音**
-- 每段分開錄成獨立檔案，錄壞就重錄那一段，不用整支重來
-- 段落之間停 2 秒，後製要對時間點時好找
-- 錄完丟進 `transcribe.py` 就有字幕，不用自己打
+> Signal AI. Not just answering you — getting you to actually learn it.
+
+---
+
+## Recording notes
+
+- Phone earbuds are fine. What matters is **15cm from your mouth in a room without echo**
+- Record each section as its own file — reshoot one section, not the whole thing
+- Leave 2 seconds of silence between sections; it makes lining things up much easier
+- Run the recording through `transcribe.py` and you get the subtitles for free

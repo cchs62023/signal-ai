@@ -1,18 +1,18 @@
-# Signal AI — YouTube 3 分鐘 demo 的段落設定
+# Signal AI — section plan for the 3-minute YouTube demo
 #
-# 格式: 影片檔 | 章節標題 | 開始秒 | 結束秒 | 副標
-# 開始/結束留空 = 用整段。改完直接跑:
+# Format: clip | chapter title | start sec | end sec | subtitle
+# Leave start/end empty to use the whole clip. When it's right, run:
 #   bash ../.claude/skills/video-youtube/scripts/make-youtube.sh --sections sections.txt \
-#     -o signal_demo_youtube.mp4 --title "Signal AI" --sub "會跟著你學的 AI 助理"
+#     -o signal_demo_youtube.mp4 --title "Signal AI" --sub "The assistant that learns how you learn"
 #
-# 下面的秒數是「3 分鐘怎麼分配」的建議值，不是從你的素材量出來的。
-# 先跑這行看每段實際多長，再把數字調準:
+# The seconds below are a budget for fitting 3 minutes — they are NOT measured
+# from your footage. Measure first, then correct them:
 #   for f in *.mp4; do printf "%-22s %ss\n" "$f" "$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" | cut -d. -f1)"; done
 #
-# 時間預算: 5 張標題卡 x 2.5s = 12.5s，影片本身約 165s，合計約 2 分 58 秒。
+# Budget: 5 title cards x 2.5s = 12.5s, plus ~165s of footage = about 2:58.
 
-onboarding.mp4 | 先認識你怎麼學   | 0 | 30 | Learning Profile Onboarding
-sequencing.mp4 | 一題一題往下問   | 0 | 45 | Sequential Question Handling
-format.mp4     | 換你要的呈現方式 | 0 | 28 | Format Customization
-trust.mp4      | 每句話都能查證   | 0 | 32 | Trust Indicators & Verification
-reflection.mp4 | 反問你，不只給答案 | 0 | 30 | Critical Thinking & Reflection
+onboarding.mp4 | Learns how you learn        | 0 | 30 | Learning Profile Onboarding
+sequencing.mp4 | Follows your train of thought | 0 | 45 | Sequential Question Handling
+format.mp4     | Your format, your call      | 0 | 28 | Format Customization
+trust.mp4      | Every claim, checkable      | 0 | 32 | Trust Indicators & Verification
+reflection.mp4 | It asks you back            | 0 | 30 | Critical Thinking & Reflection
