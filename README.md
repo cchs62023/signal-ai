@@ -49,6 +49,21 @@ directly or serve the folder statically. No build step and no dependencies.
 | `runtime.js` | ~140-line renderer: `{{holes}}`, `sc-if`, `sc-for`, events |
 | `wallpaper.webp` | desktop background |
 | `icon-*.svg` | the source Signal icons the orb states are drawn from |
+| `fonts/` | Archivo, self-hosted — the page makes no external requests |
 
-Typeface is Archivo (Google Fonts); it falls back to the system sans if that
-does not load.
+Typeface is Archivo, served from `fonts/` rather than Google Fonts, so the
+page has no third-party dependency and renders identically offline.
+
+## Demo video
+
+`.claude/skills/demo-video/` records a YouTube-ready 16:9 1920x1080 MP4 by
+driving the real page in headless Chromium:
+
+```bash
+python3 .claude/skills/demo-video/scripts/record_demo.py --out demo.mp4
+```
+
+The walkthrough is a beat sheet in the script; `--seconds` re-paces it. Note
+that the desktop is 1440x900 (16:10), so it fits a 16:9 frame at 1728x1080 —
+the script fills the remaining side strips with the blurred wallpaper rather
+than leaving flat bars. See the skill for how to make it edge-to-edge.
