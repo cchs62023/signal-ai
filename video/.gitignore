@@ -1,0 +1,4 @@
+# 影片檔不進 git —— 素材在 GitHub Release，成品太大
+raw/
+*.mp4
+*.jpg

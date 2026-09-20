@@ -1,0 +1,17 @@
+# Signal AI — 3 分鐘 YouTube 版段落表
+# 格式: 影片檔 | 章節標題 | 開始秒 | 結束秒 | 副標 | 速度
+# 標題留空 = 接續前一段，不另開章節。
+#
+# 秒數是實際看過每一格畫面後訂的（用 ffmpeg contact sheet 對過）。
+# 素材全部沒有聲音，所以這是「畫面定剪」，旁白錄好再疊上去。
+
+raw/1.signal.handdrawing.mp4          | The problem              | 4  | 56  | Too many signals, one decision      | 2.9
+raw/5.signal.final.prototype.demo.mp4 | Signal in the background | 0  | 26  | Connect your tools, then forget it  |
+raw/5.signal.final.prototype.demo.mp4 | One decision             | 26 | 38  | One thing actually needs you        |
+raw/5.signal.final.prototype.demo.mp4 | Where the info came from | 38 | 50  | Follow the claim back to its source | 0.7
+raw/5.signal.final.prototype.demo.mp4 | Ask and decide           | 50 | 77  | It drafts, you approve              |
+raw/5.signal.final.prototype.demo.mp4 | Who decides what         | 77 | 92  | Authority, not just opinion         |
+raw/5.signal.final.prototype.demo.mp4 | The call is yours        | 92 | 104 | Signal recommends, you decide       |
+raw/2.signal.process.in.figma.mp4     | How it was built         | 0  | 19  | Concept and design system           | 1.6
+raw/3.signal.process.in.chatgpt.mp4   |                          | 0  | 8   |                                     | 1.3
+raw/4.signal.process.in.claude.code.mp4 |                        | 0  | 13  |                                     | 1.6
